@@ -2,13 +2,6 @@
 
 A pre-compiled WebAssembly (WASM) version of mp4decrypt from the Bento4 SDK that enables high-performance decryption of CENC-encrypted MP4/M4A files directly in web browsers.
 
-## Features
-
-- **Client-Side Decryption**: Decrypt MP4/M4A files entirely in the user's browser
-- **High Performance**: Leverages WebAssembly for near-native decryption speed
-- **Modern JavaScript Module**: Compiled as a standard ES6 module for easy integration
-- **Filesystem Access**: Includes Emscripten FS library for file operations in WASM memory
-- **Command-Line Control**: Exposes `callMain` function to execute mp4decrypt with standard CLI arguments
 
 ## CDN Hosting
 
