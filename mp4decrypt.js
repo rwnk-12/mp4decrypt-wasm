@@ -1,3 +1,7 @@
+// https://github.com/rwnk-12/mp4decrypt-wasm
+
+
+
 // This code implements the `-sMODULARIZE` settings by taking the generated
 // JS program code (INNER_JS_CODE) and wrapping it in a factory function.
 
