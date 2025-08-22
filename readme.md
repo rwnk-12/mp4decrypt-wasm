@@ -213,46 +213,6 @@ function decryptWithUniqueNames(encryptedBuffer, key) {
 }
 ```
 
-## Feature Detection
-
-```javascript
-export async function canUseMp4decrypt() {
-  try {
-    // Check WebAssembly support
-    if (typeof WebAssembly === 'undefined') {
-      return false;
-    }
-    
-    // Test module loading
-    const createModule = (await import('https://cdn.jsdelivr.net/gh/rwnk-12/mp4decrypt-wasm/mp4decrypt.js')).default;
-    
-    // Test WASM binary fetch
-    const wasmResponse = await fetch('https://cdn.jsdelivr.net/gh/rwnk-12/mp4decrypt-wasm/mp4decrypt.wasm');
-    if (!wasmResponse.ok) return false;
-    
-    const wasmBinary = await wasmResponse.arrayBuffer();
-    const module = await createModule({ wasmBinary });
-    
-    // Verify required functions exist
-    return typeof module.callMain === 'function' && 
-           typeof module.FS?.writeFile === 'function' &&
-           typeof module.FS?.readFile === 'function';
-           
-  } catch (error) {
-    console.warn('mp4decrypt-wasm not available:', error);
-    return false;
-  }
-}
-
-// Usage
-if (await canUseMp4decrypt()) {
-  console.log('mp4decrypt-wasm is supported!');
-  await initMp4decrypt();
-} else {
-  console.log('mp4decrypt-wasm not supported in this environment');
-}
-```
-
 ## License
 
 This project is a WebAssembly port of the original mp4decrypt tool. Please refer to the original project's licensing terms.
